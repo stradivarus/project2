@@ -1,0 +1,254 @@
+.grid-container .sidebar .user form, .grid-container .sidebar .add-channel form, .grid-container .chatroom .type-message form {
+  margin: 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.grid-container .sidebar .user form input[type=text], .grid-container .sidebar .add-channel form input[type=text], .grid-container .chatroom .type-message form textarea {
+  background-color: inherit;
+  border: 2px solid #23F6AA;
+  font-size: 1.2em;
+  outline: none;
+  border-radius: 16px;
+  width: 80%;
+}
+
+.grid-container .sidebar .user form button, .grid-container .sidebar .add-channel form button, .grid-container .chatroom .type-message form button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  outline: none;
+  color: #23F6AA;
+  background-color: white;
+  padding: 6px 12px;
+  font-size: 1.2em;
+  margin-left: 5px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: #333;
+}
+
+p {
+  margin: 0;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: minmax(25vw, 360px) minmax(60vw, 864px);
+      grid-template-columns: minmax(25vw, 360px) minmax(60vw, 864px);
+  -ms-grid-rows: auto minmax(500px, 83vh);
+      grid-template-rows: auto minmax(500px, 83vh);
+  -webkit-column-gap: 3vw;
+          column-gap: 3vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 6vw;
+}
+
+.grid-container div {
+  border-radius: 16px;
+}
+
+.grid-container .logo {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+}
+
+.grid-container .logo h1 {
+  font-family: "Roboto", Helvetica, sans-serif;
+  color: black;
+  letter-spacing: 0.23em;
+  font-variant: small-caps;
+  font-weight: 300;
+  font-size: 3em;
+  margin: 0 0 .3em;
+  display: inline-block;
+  width: auto;
+}
+
+.grid-container .logo h1:hover {
+  letter-spacing: .4em;
+  cursor: pointer;
+}
+
+.grid-container .sidebar {
+  background-color: #c5f4e2;
+  -webkit-box-shadow: 5px 5px 10px lightgrey;
+          box-shadow: 5px 5px 10px lightgrey;
+}
+
+.grid-container .sidebar .user {
+  background-color: #5ef8c1;
+  height: 15%;
+  border-radius: 16px 16px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.grid-container .sidebar .user strong {
+  font-size: 1.5em;
+}
+
+.grid-container .sidebar .user .label {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 5px 0 0 12px;
+}
+
+.grid-container .sidebar .user form input[type=text] {
+  margin-left: 10px;
+  width: 45%;
+}
+
+.grid-container .sidebar .user form input[type=text]:focus {
+  background-color: white;
+}
+
+.grid-container .sidebar .user form button {
+  margin-right: 10px;
+  border-radius: 16px;
+}
+
+.grid-container .sidebar .user form button:hover {
+  color: white;
+  background-color: #23F6AA;
+}
+
+.grid-container .sidebar .channel-list {
+  height: 75%;
+  overflow: scroll;
+}
+
+.grid-container .sidebar .channel-list ul {
+  margin: 0;
+}
+
+.grid-container .sidebar .channel-list ul li {
+  padding-top: 1em;
+}
+
+.grid-container .sidebar .channel-list ul li:last-of-type {
+  padding-bottom: 1em;
+}
+
+.grid-container .sidebar .channel-list .alert-container {
+  text-align: center;
+}
+
+.grid-container .sidebar .channel-list .alert-container .alert-warning {
+  display: inline-block;
+  margin: 1em;
+  padding: 1em 2em;
+  text-align: center;
+  border-radius: 16px;
+  background-color: yellow;
+}
+
+.grid-container .sidebar .add-channel {
+  background-color: #5ef8c1;
+  height: 10%;
+  border-radius: 0 0 16px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.grid-container .sidebar .add-channel form input[type=text]:focus {
+  background-color: white;
+}
+
+.grid-container .sidebar .add-channel form button {
+  border-radius: 50%;
+}
+
+.grid-container .sidebar .add-channel form button:hover {
+  color: white;
+  background-color: #23F6AA;
+}
+
+.grid-container .chatroom {
+  background-color: #f0fcf7;
+  -webkit-box-shadow: 5px 5px 10px lightgrey;
+          box-shadow: 5px 5px 10px lightgrey;
+}
+
+.grid-container .chatroom .messages {
+  height: 85%;
+  overflow: scroll;
+}
+
+.grid-container .chatroom .messages .message {
+  padding: 1em 1em 0 1em;
+}
+
+.grid-container .chatroom .messages .message .message-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.grid-container .chatroom .messages .message .message-text {
+  padding: .4em 0 .6em 0;
+  border-bottom: 1px solid #85E7C3;
+  border-radius: 0;
+}
+
+.grid-container .chatroom .type-message {
+  height: 15%;
+  background-color: #23F6AA;
+  border-radius: 0 0 16px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.grid-container .chatroom .type-message form textarea {
+  resize: none;
+  background-color: white;
+}
+
+.grid-container .chatroom .type-message form button {
+  border-radius: 16px;
+  padding: 8px 36px;
+}
+
+input, textarea {
+  padding: 6px;
+}
+/*# sourceMappingURL=styles.css.map */

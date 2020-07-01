@@ -1,0 +1,247 @@
+$blue: #85E7C3;
+$green: #23F6AA;
+$grey: #333;
+$radius: 16px;
+
+%form {
+    margin: 10px;
+    width: 100%;
+    display: flex;  
+    justify-content: space-between;
+}
+
+%text {
+    background-color: inherit;
+    border: 2px solid $green;
+    font-size: 1.2em;
+    outline: none;
+    border-radius: $radius;
+    width: 80%;
+}
+
+%button {
+    align-self: center;
+    border: none;
+    outline: none;
+    color: $green;
+    background-color: white;
+    padding: 6px 12px;
+    font-size: 1.2em;
+    margin-left: 5px;
+}
+
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: $grey;
+}
+
+p {
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: minmax(25vw, 360px) minmax(60vw, 864px);
+    grid-template-rows: auto minmax(500px, 83vh);
+    column-gap: 3vw;
+    justify-content: center;
+    padding: 0 6vw;
+
+    div {
+        border-radius: $radius;
+    }
+
+    .logo {
+        grid-column: 1 / 3;
+
+        h1 {
+            font-family: "Roboto", Helvetica, sans-serif;
+            color: darken($green, 55%);
+            letter-spacing: 0.23em;
+            font-variant: small-caps;
+            font-weight: 300;
+            font-size: 3em;
+            margin: 0 0 .3em;
+            display: inline-block;
+            width: auto;
+
+            &:hover {
+                letter-spacing: .4em;
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    .sidebar {
+        background-color: lighten($blue, 15%);
+        box-shadow: 5px 5px 10px lightgrey;
+        
+        .user {
+            background-color: lighten($green, 12%);
+            height: 15%;
+            border-radius: $radius $radius 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            strong {
+                font-size: 1.5em;
+            }
+
+            .label {
+                align-self: flex-start;
+                margin: 5px 0 0 12px;
+            }
+
+            form {
+                @extend %form;
+
+                input[type=text] {
+                    @extend %text;
+                    margin-left: 10px;
+                    width: 45%;
+
+                    &:focus {
+                        background-color: white;
+                    }
+                }
+
+                button {
+                    @extend %button;
+                    margin-right: 10px;
+                    border-radius: $radius;
+
+                    &:hover {
+                        color: white;
+                        background-color: $green;
+                    }
+                }
+                
+            }
+        }
+
+        .channel-list {
+            height: 75%;
+            overflow: scroll;
+
+            ul {
+                margin: 0;
+
+                li {
+                    padding-top: 1em;
+                }
+
+                li:last-of-type {
+                    padding-bottom: 1em;
+                }
+            }
+
+            .alert-container {
+                text-align: center;
+            
+                .alert-warning {
+                    display: inline-block;
+                    margin: 1em;
+                    padding: 1em 2em;
+                    text-align: center;
+                    border-radius: $radius;
+                    background-color: yellow;
+                }
+            }
+        }
+
+        .add-channel {
+            background-color: lighten($green, 12%);
+            height: 10%;
+            border-radius: 0 0 $radius $radius;
+            display: flex;
+            align-items: flex-end;
+
+            form {
+                @extend %form;
+
+                input[type=text]
+                {
+                    @extend %text;
+
+                    &:focus {
+                        background-color: white;
+                    }
+                }
+
+                button {
+                    @extend %button;
+                    border-radius: 50%;
+                    
+                    &:hover {
+                        color: white;
+                        background-color: $green;
+                    }
+                }
+            }
+        }
+    }
+
+    .chatroom {
+        background-color: lighten($blue, 25%);
+        box-shadow: 5px 5px 10px lightgrey;
+
+        .messages {
+            height: 85%;
+            overflow: scroll;
+
+            .message {
+                padding: 1em 1em 0 1em;
+
+                .message-header {
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .message-text {
+                    padding: .4em 0 .6em 0;
+                    border-bottom: 1px solid $blue;
+                    border-radius: 0;
+                }
+            }
+        }
+        
+        .type-message {
+            height: 15%;
+            background-color: $green;
+            border-radius: 0 0 $radius $radius;
+            display: flex;
+            justify-content: flex-end;
+
+            form {
+                @extend %form;
+
+                textarea {
+                    @extend %text;
+                    resize: none;
+                    background-color: white;
+                }
+    
+                button {
+                    @extend %button;
+                    border-radius: $radius;
+                    padding: 8px 36px;
+                }
+            }
+        }
+    }
+}
+
+input, textarea{
+    padding: 6px;
+}
+
+
+
