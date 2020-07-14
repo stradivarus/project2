@@ -45,6 +45,19 @@ p {
   margin: 0;
 }
 
+.alert-container {
+  text-align: center;
+}
+
+.alert-container .alert-warning {
+  display: inline-block;
+  margin: 1em;
+  padding: 1em 2em;
+  text-align: center;
+  border-radius: 16px;
+  background-color: yellow;
+}
+
 .grid-container {
   display: -ms-grid;
   display: grid;
@@ -139,6 +152,7 @@ p {
 .grid-container .sidebar .user form button:hover {
   color: white;
   background-color: #23F6AA;
+  cursor: pointer;
 }
 
 .grid-container .sidebar .channel-list {
@@ -151,24 +165,22 @@ p {
 }
 
 .grid-container .sidebar .channel-list ul li {
-  padding-top: 1em;
+  margin-top: .7em;
+  padding: 2px 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .grid-container .sidebar .channel-list ul li:last-of-type {
-  padding-bottom: 1em;
+  margin-bottom: 1em;
 }
 
-.grid-container .sidebar .channel-list .alert-container {
-  text-align: center;
-}
-
-.grid-container .sidebar .channel-list .alert-container .alert-warning {
-  display: inline-block;
-  margin: 1em;
-  padding: 1em 2em;
-  text-align: center;
-  border-radius: 16px;
-  background-color: yellow;
+.grid-container .sidebar .channel-list ul li:hover {
+  cursor: pointer;
 }
 
 .grid-container .sidebar .add-channel {
@@ -194,6 +206,15 @@ p {
 .grid-container .sidebar .add-channel form button:hover {
   color: white;
   background-color: #23F6AA;
+  cursor: pointer;
+}
+
+.grid-container .sidebar .add-channel form button:disabled {
+  background-color: #ddd;
+  color: #fff;
+  cursor: not-allowed;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .grid-container .chatroom {
@@ -248,7 +269,26 @@ p {
   padding: 8px 36px;
 }
 
+.grid-container .chatroom .type-message form button:hover {
+  color: white;
+  background-color: #09dd91;
+  cursor: pointer;
+}
+
+.grid-container .chatroom .type-message form button:disabled {
+  background-color: #ddd;
+  color: #fff;
+  cursor: not-allowed;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 input, textarea {
   padding: 6px;
+}
+
+.active {
+  background-color: #f0fcf7;
+  border-radius: 16px;
 }
 /*# sourceMappingURL=styles.css.map */

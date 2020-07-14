@@ -44,6 +44,19 @@ p {
     margin: 0;
 }
 
+.alert-container {
+    text-align: center;
+
+    .alert-warning {
+        display: inline-block;
+        margin: 1em;
+        padding: 1em 2em;
+        text-align: center;
+        border-radius: $radius;
+        background-color: yellow;
+    }
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: minmax(25vw, 360px) minmax(60vw, 864px);
@@ -121,6 +134,7 @@ p {
                     &:hover {
                         color: white;
                         background-color: $green;
+                        cursor: pointer;
                     }
                 }
                 
@@ -135,24 +149,18 @@ p {
                 margin: 0;
 
                 li {
-                    padding-top: 1em;
+                    margin-top: .7em;
+                    padding: 2px 10px;
+                    width: fit-content;
+                    height: fit-content;
                 }
 
                 li:last-of-type {
-                    padding-bottom: 1em;
+                    margin-bottom: 1em;
                 }
-            }
 
-            .alert-container {
-                text-align: center;
-            
-                .alert-warning {
-                    display: inline-block;
-                    margin: 1em;
-                    padding: 1em 2em;
-                    text-align: center;
-                    border-radius: $radius;
-                    background-color: yellow;
+                li:hover {
+                    cursor: pointer;
                 }
             }
         }
@@ -183,6 +191,14 @@ p {
                     &:hover {
                         color: white;
                         background-color: $green;
+                        cursor: pointer;
+                    }
+
+                    &:disabled {
+                        background-color: #ddd;
+                        color: #fff;
+                        cursor: not-allowed;
+                        box-shadow: none;
                     }
                 }
             }
@@ -233,14 +249,33 @@ p {
                     @extend %button;
                     border-radius: $radius;
                     padding: 8px 36px;
+
+                    &:hover {
+                        color: white;
+                        background-color: darken($green, 10%);
+                        cursor: pointer;
+                    }
+
+                    &:disabled {
+                        background-color: #ddd;
+                        color: #fff;
+                        cursor: not-allowed;
+                        box-shadow: none;
+                    }
                 }
             }
         }
     }
 }
 
-input, textarea{
+
+input, textarea {
     padding: 6px;
+}
+
+.active {
+    background-color: lighten($blue, 25%);
+    border-radius: $radius;
 }
 
 
