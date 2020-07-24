@@ -54,7 +54,8 @@ function load() {
             // we did all we had to do with loading channels
 
             // integrating socketIO
-            var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+            var socket = io.connect(location.protocol + '//' + document.domain);
+            //+ ':' + location.port
 
             socket.on('connect', () => {
                 document.querySelector(".add-channel form").onsubmit = () => {
