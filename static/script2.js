@@ -79,7 +79,7 @@ function load() {
                 };
             });
 
-            socket.on('announce channels', data => {
+            socket.on('announce channel', data => {
                 if (data.exists) {
                     if (data.user == localStorage.getItem('name')) {
                         document.querySelectorAll('.channel-list li').forEach(li => {
@@ -90,12 +90,14 @@ function load() {
                     };
                 }
                 else {
-                    loadChannels(data.channels);
-                    document.querySelectorAll('.channel-list li').forEach(li => {
-                        if (li.innerHTML === data.channelName) {
-                            li.classList.add("new");
-                        }
-                    });
+                    const li = document.createElement('li')
+                    li.innerHTML = data.channelName;
+                    document.querySelector('.channel-list ul').append(li);
+
+                    li.onclick = function () {
+                        localStorage.setItem('channel', li.innerHTML);
+                        loadMessages();
+                    };
                 };
             });
 
@@ -105,6 +107,16 @@ function load() {
                     noMessages = false;
                 };
             });
+
+            // user clicked on a chat name link
+            document.querySelectorAll('.channel-list li').forEach(item => {
+
+                item.onclick = function () {
+                    localStorage.setItem('channel', item.innerHTML);
+                    loadMessages();
+                };
+            });
+
         };
     };
     request.open('GET', '/api/channels');
@@ -112,8 +124,8 @@ function load() {
 }
 
 
-function loadMessages(setActive = true, private = false) {
-   
+function loadMessages(setActive = true) {
+
     if (localStorage.getItem('channel')) {
 
         document.querySelector('.type-message button').disabled = false;
@@ -121,12 +133,8 @@ function loadMessages(setActive = true, private = false) {
         document.querySelector('.messages').innerHTML = '';
 
         if (setActive) {
-            document.querySelectorAll('.channel-list li').forEach(li => {
-                li.classList.remove("active");
-                if (li.innerHTML == localStorage.channel) {
-                    li.classList.add("active");
-                };
-            });
+            document.querySelectorAll('.channel-list li').forEach(li => li.classList.remove("active"));
+            event.target.classList.add("active");
         };
     };
 
@@ -169,17 +177,6 @@ function loadChannels(channels) {
     result += '</ul>';
 
     document.querySelector('.channel-list').innerHTML = result;
-
-    // adding handler for when user clicked on a chat name link
-    document.querySelectorAll('.channel-list li').forEach(item => {
-
-        item.onclick = function () {
-            document.querySelectorAll('.new').forEach(x => x.classList.remove('new'));    
-            localStorage.setItem('channel', item.innerHTML);
-            loadMessages();
-        };
-    });
-
 };
 
 // when we add a message we should check if there were any beforehand
@@ -205,23 +202,6 @@ function createMessage(message) {
     messages = document.querySelector('.messages');
     messages.append(div);
     messages.scrollTop = messages.scrollHeight;
-
-    // making user clickable (to start a private convo)
-    div.querySelector('strong').onclick = function() {
-        localStorage.setItem('channel', `private: ${this.innerHTML}`);
-
-        const li = document.createElement('li');
-        li.innerHTML = `private: ${this.innerHTML}`;
-        document.querySelector('.channel-list ul').append(li);
-        
-
-        li.onclick = function() {
-            localStorage.setItem('channel', this.innerHTML);
-            loadMessages();
-        };
-
-        loadMessages();
-    };
 };
 
 

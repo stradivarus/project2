@@ -7,8 +7,10 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
+MSG_LIMIT = 100
 channel_list = ['a', 'maggy loves you', 'haha']
 # messages = {'channelname1' : [{'user': user1, 'date': date1, 'message' : message1}]}
+# private_messages = {(user1, user2) : [{'user' : user, 'date' : date1, 'message': message1}]}
 messages = {}
 
 
@@ -24,8 +26,9 @@ def new_channel(data):
     if channel_name not in channel_list:
         channel_list.append(channel_name)
         exists = 0
+        channel_list.sort()
 
-    emit("announce channel", {'channelName' : channel_name, 'exists' : exists, 'user' : data['user']}, broadcast=True)
+    emit("announce channels", {'channels': channel_list, 'channelName' : channel_name, 'exists' : exists, 'user' : data['user']}, broadcast=True)
 
 
 @socketio.on("new message")
@@ -36,7 +39,11 @@ def new_message(data):
     if not channel in messages:
         messages[channel] = []
     messages[channel].append(message)
-    
+
+    no_of_msg = len(messages[channel])
+    if no_of_msg >= MSG_LIMIT:
+        messages[channel] = messages[channel][(no_of_msg - MSG_LIMIT):]
+     
     emit("announce message", message, broadcast=True)
 
 

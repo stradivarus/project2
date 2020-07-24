@@ -45,7 +45,7 @@
             <div class="add-channel">
                 <form>
                     <input type="text" name="channel-name" id="channel-name" placeholder="Add channel"
-                        autocomplete="off" required>
+                        autocomplete="off" required pattern="[\w\- ]+" title="Only alphanumeric characters, space, _ and -">
                     <button type="submit" disabled>+</button>
                 </form>
             </div>
