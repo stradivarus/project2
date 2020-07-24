@@ -6,6 +6,7 @@ from flask_socketio import SocketIO, emit
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
+socketio.init_app(app, cors_allowed_origins="*")
 
 MSG_LIMIT = 100
 channel_list = ['a', 'maggy loves you', 'haha']
